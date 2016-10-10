@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Anastasios Skarlatidis</title>
+    <link>https://anskarl.github.io/</link>
+    <description>Recent content on Anastasios Skarlatidis</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>All rights reserved - 2016</copyright>
+    <lastBuildDate>Sat, 08 Oct 2016 23:07:22 +0300</lastBuildDate>
+    <atom:link href="https://anskarl.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Probabilistic Event Calculus for Event Recognition</title>
+      <link>https://anskarl.github.io/publications/TOCL15/</link>
+      <pubDate>Sat, 08 Oct 2016 23:07:22 +0300</pubDate>
+      
+      <guid>https://anskarl.github.io/publications/TOCL15/</guid>
+      <description>
+
+&lt;p&gt;Anastasios Skarlatidis&lt;sup&gt;1,2&lt;/sup&gt;, Georgios Paliouras&lt;sup&gt;1&lt;/sup&gt;, Alexander Artikis&lt;sup&gt;3,1&lt;/sup&gt; and George A. Vouros&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;sup&gt;1&lt;/sup&gt;Institute of Informatics and Telecommunications, NCSR &amp;ldquo;Demokritos&amp;rdquo;&lt;/br&gt;
+&lt;sup&gt;2&lt;/sup&gt;Department of Digital Systems, University of Piraeus&lt;/br&gt;
+&lt;sup&gt;3&lt;/sup&gt;Department of Maritime Studies, University of Piraeus&lt;/br&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Abstract&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Symbolic event recognition systems have been successfully applied to a variety of application domains, extracting useful information in the form of events, allowing experts or other systems to monitor and respond when significant events are recognised. In a typical event recognition application, however, these systems often have to deal with a significant amount of uncertainty. In this paper, we address the issue of uncertainty in logic-based event recognition by extending the Event Calculus with probabilistic reasoning. Markov Logic Networks are a natural candidate for our logic-based formalism. However, the temporal semantics of the Event Calculus introduce a number of challenges for the proposed model. We show how and under what assumptions we can overcome these problems. Additionally, we study how probabilistic modelling changes the behaviour of the formalism, affecting its key property, the inertia of fluents. Furthermore, we demonstrate the advantages of the probabilistic Event Calculus through
+examples and experiments in the domain of activity recognition, using a publicly available dataset for video surveillance.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://anskarl.github.io/publications/papers/paper-TOCL15.pdf&#34;&gt;Paper (PDF)&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;knowledge-base-files-dataset-and-evaluation-results&#34;&gt;Knowledge base files, dataset and evaluation results&lt;/h4&gt;
+
+&lt;p&gt;Composite event definitions and the Markov Logic Netoworks formatted version of the dataset can be downloaded from &lt;a href=&#34;https://users.iit.demokritos.gr/~anskarl/pub/mlnec/MLN-EC_CAVIAR-20130319-00_07_20.tar.bz2&#34;&gt;here&lt;/a&gt; (&lt;a href=&#34;https://users.iit.demokritos.gr/~anskarl/pub/mlnec/MLN-EC_CAVIAR-20130319-00_07_20.tar.bz2.md5&#34;&gt;md5&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h3 id=&#34;bibtex&#34;&gt;BibTex&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bibtex&#34;&gt;@article{PEC-ER-TOCL15,
+  author = {Skarlatidis A., Paliouras G., Artikis A. and Vouros G.},
+  title = {{Probabilistic Event Calculus for Event Recognition}},
+  journal = {ACM Transactions on Computational Logic},
+  issue_date = {April 2015},
+  volume = {16},
+  number = {2},
+  month = feb,
+  year = {2015},
+  issn = {1529-3785},
+  pages = {11:1--11:37},
+  articleno = {11},
+  numpages = {37},
+  url = {http://doi.acm.org/10.1145/2699916},
+  doi = {10.1145/2699916},
+  acmid = {2699916},
+  publisher = {ACM},
+  address = {New York, NY, USA},
+  keywords = {Events, machine learning, probabilistic inference, uncertainty},
+} 
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A Probabilistic Logic Programming Event Calculus</title>
+      <link>https://anskarl.github.io/publications/TPLP15/</link>
+      <pubDate>Sat, 08 Oct 2016 22:42:34 +0300</pubDate>
+      
+      <guid>https://anskarl.github.io/publications/TPLP15/</guid>
+      <description>
+
+&lt;p&gt;&lt;strong&gt;Anastasios Skarlatidis&lt;/strong&gt;&lt;sup&gt;1,2&lt;/sup&gt;, &lt;strong&gt;Alexander Artikis&lt;/strong&gt;&lt;sup&gt;1&lt;/sup&gt;, &lt;strong&gt;Jason Filippou&lt;/strong&gt;&lt;sup&gt;1,3&lt;/sup&gt; and &lt;strong&gt;Georgios Paliouras&lt;/strong&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;sup&gt;1&lt;/sup&gt;Institute of Informatics and Telecommunications, NCSR &amp;ldquo;Demokritos&amp;rdquo;&lt;/br&gt;
+&lt;sup&gt;2&lt;/sup&gt;Department of Digital Systems, University of Piraeus&lt;/br&gt;
+&lt;sup&gt;3&lt;/sup&gt;University of Maryland, USA &lt;/br&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Abstract:&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We present a system for recognising human activity given a symbolic representation of video content. The input of our system is a set of time-stamped short-term activities (STA) detected on video frames. The output is a set of recognised long-term activities (LTA), which are pre-defined temporal combinations of STA. The constraints on the STA that, if satisfied, lead to the recognition of a LTA, have been expressed using a dialect of the Event Calculus. In order to handle the uncertainty that naturally occurs in human activity recognition, we adapted this dialect to a state-of-the-art probabilistic logic programming framework. We present a detailed evaluation and comparison of the crisp and probabilistic approaches through experimentation on a benchmark dataset of human surveillance videos.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;downloads&#34;&gt;Downloads&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://arxiv.org/pdf/1204.1851v2.pdf&#34;&gt;Paper (Draft)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The modified version of the &lt;a href=&#34;http://homepages.inf.ed.ac.uk/rbf/CAVIARDATA1/&#34;&gt;CAVIAR dataset&lt;/a&gt;, including ProbLog-EC, the high-level event definitions and the event recognition results can be downloaded from &lt;a href=&#34;https://users.iit.demokritos.gr/~anskarl/pub/ProbLog-EC/TPLP-Data.v2012.11.10-20140312-18_07_29.tar.bz2&#34;&gt;here&lt;/a&gt; (Compressed archive ~0.5G; &lt;a href=&#34;https://users.iit.demokritos.gr/~anskarl/pub/ProbLog-EC/TPLP-Data.v2012.11.10-20140312-18_07_29.tar.bz2.md5&#34;&gt;md5&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h3 id=&#34;bibtex&#34;&gt;BibTex&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bibtex&#34;&gt;@article{PLP-EC-TPLP15,
+  author    = {Anastasios Skarlatidis and Alexander Artikis and Jason Filipou and Georgios Paliouras},
+  title     = {{A Probabilistic Logic Programming Event Calculus}},
+  journal   = {{TPLP}},
+  volume    = {15},
+  number    = {2},
+  pages     = {213--245},
+  year      = {2015},
+  url       = {http://dx.doi.org/10.1017/S1471068413000690},
+  doi       = {10.1017/S1471068413000690}
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Probabilistic Event Calculus based on Markov Logic Networks</title>
+      <link>https://anskarl.github.io/publications/RML11/</link>
+      <pubDate>Sat, 08 Oct 2016 22:06:45 +0300</pubDate>
+      
+      <guid>https://anskarl.github.io/publications/RML11/</guid>
+      <description>
+
+&lt;p&gt;&lt;strong&gt;Anastasios Skarlatidis&lt;/strong&gt;&lt;sup&gt;1,2&lt;/sup&gt;, &lt;strong&gt;Georgios Paliouras&lt;/strong&gt;&lt;sup&gt;1&lt;/sup&gt;, &lt;strong&gt;George A. Vouros&lt;/strong&gt;&lt;sup&gt;2&lt;/sup&gt;, &lt;strong&gt;Alexander Artikis&lt;/strong&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;sup&gt;1&lt;/sup&gt;Institute of Informatics and Telecommunications, NCSR &amp;ldquo;Demokritos&amp;rdquo;
+&lt;sup&gt;2&lt;/sup&gt;Department of Digital Systems, University of Piraeus&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Abstract&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In this paper, we address the issue of uncertainty in event recognition by extending the Event Calculus with probabilistic reasoning. Markov Logic Networks are a natural candidate for our logic-based formalism. However, the temporal semantics of Event Calculus introduce a number of challenges for the proposed model. We show how and under what assumptions we can overcome these problems. Additionally, we demonstrate the advantages of the probabilistic Event Calculus through examples and experiments in the domain of activity recognition, using a publicly available dataset of video surveillance.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;downloads&#34;&gt;Downloads&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://anskarl.github.io/publications/papers/paper-RML11.pdf&#34;&gt;Paper (PDF)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The knowledge base source files of a probabilistic event recognition method that employs an &lt;a href=&#34;https://en.wikipedia.org/wiki/Event_calculus&#34;&gt;Event Calculus&lt;/a&gt; formalism based on &lt;a href=&#34;https://en.wikipedia.org/wiki/Markov_logic_network&#34;&gt;Markov Logic Networks&lt;/a&gt;, are given below:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Markov Logic Networks knowledge base files, that include the Discrete Event Calculus domain-independent axioms and the high-level event definitions for the CAVIAR dataset, are available &lt;a href=&#34;CAVIAR.ProbDEC.tar.gz&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;The dataset source files of the CAVIAR project are given below:
+
+&lt;ul&gt;
+&lt;li&gt;Original files and a description of the dataset can be found &lt;a href=&#34;https://homepages.inf.ed.ac.uk/rbf/CAVIARDATA1/&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Dataset files transformed into Event Calculus narrative syntax in Markov Logic Networks and Prolog formats, are available &lt;a href=&#34;https://users.iit.demokritos.gr/~anskarl/pub/rml11/CAVIAR_Dataset1/&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;The source code of the scripts that transform the original XML-based CAVIAR dataset into Markov Logic Networks and Prolog formats, are available &lt;a href=&#34;https://users.iit.demokritos.gr/~anskarl/pub/rml11/CAVIAR_Dataset.Scripts.tar.gz&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;bibtex&#34;&gt;BibTex&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bibtex&#34;&gt;@inproceedings{PEC-MLN-RML11,
+  author    = {Anastasios Skarlatidis and Georgios Paliouras and George A. Vouros and Alexander Artikis},
+  title     = {Probabilistic Event Calculus Based on Markov Logic Networks},
+  booktitle = {RuleML America},
+  publisher = {Springer},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {7018},
+  year      = {2011},
+  pages     = {155-170},
+  ee        = {http://dx.doi.org/10.1007/978-3-642-24908-2_19}
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>https://anskarl.github.io/publications/</link>
+      <pubDate>Sat, 08 Oct 2016 20:58:21 +0300</pubDate>
+      
+      <guid>https://anskarl.github.io/publications/</guid>
+      <description>&lt;p&gt;Most of my publications can also be found at &lt;a href=&#34;http://www.informatik.uni-trier.de/~ley/pers/hd/s/Skarlatidis:Anastasios.html&#34;&gt;DBLP&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Michelioudakis E., Skarlatidis A., Paliouras G. and Artikis A. OSLa: Online Structure Learning using Background Knowledge Axiomatization. European Conference, ECML-PKDD, 2016. (&lt;a href=&#34;https://anskarl.github.io/publications/papers/paper-ECML-PKDD16.pdf&#34;&gt;paper&lt;/a&gt;, &lt;a href=&#34;https://anskarl.github.io/publications/papers/appendix-ECML-PKDD16.pdf&#34;&gt;online appendix&lt;/a&gt;, &lt;a href=&#34;ECML16.bib&#34;&gt;bibtex&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Skarlatidis A., Paliouras G., Artikis A. and Vouros G. Probabilistic Event Calculus for Event Recognition. ACM Transactions on Computational Logic, 16, 2, Article 11, pp. 11:1-11:37, 2015. (&lt;a href=&#34;https://anskarl.github.io/publications/TOCL15&#34;&gt;details&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Alevizos A., Skarlatidis A., Artikis A., Paliouras G. Complex Event Processing Under Uncertainty: A Short Survey. In Proceedings of Event Processing, Forecasting and Decision-Making in the Big Data Era (EPForDM), EDBT/ICDT Workshops. pp. 97-103, 2015. (&lt;a href=&#34;https://anskarl.github.io/publications/papers/paper-EPForDM15a.pdf&#34;&gt;paper&lt;/a&gt;, &lt;a href=&#34;EPForDM15a.bib&#34;&gt;bibtex&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Fournier F., Kofman A., Skarbovsky I., Skarlatidis A. Extending Event-Driven Architecture for Proactive Systems. In Proceedings of Event Processing, Forecasting and Decision-Making in the Big Data Era (EPForDM), EDBT/ICDT Workshops. pp. 104-110. 2015. (&lt;a href=&#34;https://anskarl.github.io/publications/papers/paper-EPForDM15b.pdf&#34;&gt;paper&lt;/a&gt;, &lt;a href=&#34;EPForDM15b.bib&#34;&gt;bibtex&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Skarlatidis A., Artikis A., Filippou J. and Paliouras G. A Probabilistic Logic Programming Event Calculus, Theory and Practice of Logic Programming (TPLP), volume 15, issue 02, pp. 213-245, 2015. (&lt;a href=&#34;https://anskarl.github.io/publications/TPLP15&#34;&gt;details&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Skarlatidis A. Event Recognition Under Uncertainty and Incomplete Data. PhD Thesis. Department of Digital Systems, University of Piraeus, 2014. (&lt;a href=&#34;http://www.didaktorika.gr/eadd/handle/10442/35692?locale=en&#34;&gt;permanent link&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Artikis A., Skarlatidis A., Portet F. and Paliouras G. Logic-Based Event Recognition, Knowledge Engineering Review, 27(4):469-506, 2012. (&lt;a href=&#34;https://anskarl.github.io/publications/papers/paper-LBER_KER12.pdf&#34;&gt;paper&lt;/a&gt;, &lt;a href=&#34;KER12.bib&#34;&gt;bibtex&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Skarlatidis A., Paliouras G., Vouros G. and Artikis A. Probabilistic Event Calculus based on Markov Logic Networks. Proceedings of International Symposium on Rules (RuleML@BRF), Springer, 2011. (&lt;a href=&#34;./RML11/&#34;&gt;details&lt;/a&gt;, &lt;a href=&#34;RML11.bib&#34;&gt;bibtex&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Artikis A., Paliouras G., Portet F. and Skarlatidis A. Logic-Based Representation, Reasoning and Machine Learning for Event Recognition, International Conference on Distributed Event-Based Systems (DEBS), ACM, 2010. (&lt;a href=&#34;https://anskarl.github.io/publications/papers/paper-DEBS10.pdf.gz&#34;&gt;paper&lt;/a&gt;, &lt;a href=&#34;DEBS10.bib&#34;&gt;bibtex&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Artikis A., Skarlatidis A. and Paliouras G. Behaviour Recognition from Video Content: A Logic Programming Approach, International Journal of Artificial Intelligence Tools, 19(2), 2010. (&lt;a href=&#34;http://www.worldscientific.com/doi/abs/10.1142/S021821301000011X&#34;&gt;link&lt;/a&gt;, &lt;a href=&#34;IJAIT10.bib&#34;&gt;bibtex&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>About me</title>
+      <link>https://anskarl.github.io/about/</link>
+      <pubDate>Sat, 08 Oct 2016 20:58:11 +0300</pubDate>
+      
+      <guid>https://anskarl.github.io/about/</guid>
+      <description>
+
+&lt;p&gt;Anastasios Skarlatidis ~ Data Scientist/Engineer. PhD in Artificial Intelligence, passionate about Machine Learning, Programming and Open-source.&lt;/p&gt;
+
+&lt;p&gt;You can find my open-source projects on &lt;a href=&#34;https://github.com/anskarl&#34;&gt;GitHub&lt;/a&gt;. You can view my profile on &lt;a href=&#34;https://www.linkedin.com/in/anskarl&#34;&gt;LinkedIn&lt;/a&gt;. I tweet about Artificial Intelligence, Machine Learning, Software Engineering, OSS, Photography, Music and possibly other stuff &lt;a href=&#34;https://twitter.com/anskarl&#34;&gt;@anskarl&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;interests&#34;&gt;Interests&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Machine Learning&lt;/li&gt;
+&lt;li&gt;Artificial Intelligence&lt;/li&gt;
+&lt;li&gt;Data Science&lt;/li&gt;
+&lt;li&gt;Data Engineering&lt;/li&gt;
+&lt;li&gt;Probabilistic Graphical Models&lt;/li&gt;
+&lt;li&gt;Complex Event Processing&lt;/li&gt;
+&lt;li&gt;Evolutionary Algorithms&lt;/li&gt;
+&lt;li&gt;Parallel and Distributed Systems&lt;/li&gt;
+&lt;li&gt;Scala Programming Language&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
