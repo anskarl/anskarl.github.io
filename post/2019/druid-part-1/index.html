@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="Apache Druid (part 1): A Scalable Timeseries OLAP Database System"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@anskarl"/>
+
+
+
+  	<meta property="og:title" content="Apache Druid (part 1): A Scalable Timeseries OLAP Database System &middot; Anastasios Skarlatidis" />
+  	<meta property="og:site_name" content="Anastasios Skarlatidis" />
+  	<meta property="og:url" content="https://anskarl.github.io/post/2019/druid-part-1/" />
+
+    
+        
+            <meta property="og:image" content="/images/bridge.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-03-29T08:16:40&#43;02:00" />
+
+    
+    <meta property="article:tag" content="Druid" />
+    
+    <meta property="article:tag" content="OLAP" />
+    
+    <meta property="article:tag" content="Database" />
+    
+    <meta property="article:tag" content="Timeseries" />
+    
+    
+
+    <title>Apache Druid (part 1): A Scalable Timeseries OLAP Database System &middot; Anastasios Skarlatidis</title>
+
+    
+    <meta name="description" content="Online analytical processing (OLAP) systems are commonly used in many Business Intelligence, Analytics and Data Science applications. According to Wikipedia, &amp;l" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://anskarl.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://anskarl.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://anskarl.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://anskarl.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/github-gist.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="https://anskarl.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Anastasios Skarlatidis" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.54.0" />
+
+    <link rel="canonical" href="https://anskarl.github.io/post/2019/druid-part-1/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": "https://anskarl.github.io//images/face.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://anskarl.github.io//images/face.jpg",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "https://anskarl.github.io",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "Apache Druid (part 1): A Scalable Timeseries OLAP Database System",
+    "name": "Apache Druid (part 1): A Scalable Timeseries OLAP Database System",
+    "wordCount":  2681 ,
+    "timeRequired": "PT13M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://anskarl.github.io/post/2019/druid-part-1/",
+    "datePublished": "2019-03-29T08:16Z",
+    "dateModified": "2019-03-29T08:16Z",
+    
+    "keywords": "Druid, OLAP, Database, Timeseries",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://anskarl.github.io/post/2019/druid-part-1/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-137056384-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            <h5>Contact me</h5>
+            <li class="nav-opened" role="presentation">
+            	<a href="https://Keybase.io/anskarl">Keybase</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://linkedin.com/in/anskarl">LinkedIn</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://github.com/anskarl">Github</a>
+            </li>
+        
+            <h5>Follow me</h5>
+            <li class="nav-opened" role="presentation">
+            	<a href="https://www.twitter.com/anskarl">Twitter</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://anskarl.github.io/LoMRF/">LoMRF</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://anskarl.github.io/publications">Publications</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://anskarl.github.io/about">About me</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://anskarl.github.io/">Home</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://anskarl.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Apache Druid (part 1): A Scalable Timeseries OLAP Database System</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-03-29T08:16:40&#43;02:00">
+            Mar 29, 2019
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://anskarl.github.io//tags/druid/">#Druid</a></span>
+         
+          <span class="post-tag small"><a href="https://anskarl.github.io//tags/olap/">#OLAP</a></span>
+         
+          <span class="post-tag small"><a href="https://anskarl.github.io//tags/database/">#Database</a></span>
+         
+          <span class="post-tag small"><a href="https://anskarl.github.io//tags/timeseries/">#Timeseries</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<p>Online analytical processing (OLAP) systems are commonly used in many Business Intelligence, Analytics and Data Science applications. According to <a href="https://en.wikipedia.org/wiki/Online_analytical_processing">Wikipedia</a>, &ldquo;OLAP is an approach to answer multi-dimensional analytical queries swiftly in computing&rdquo;.</p>
+
+<p>Compared to traditional relational database systems, the main difference is that the data in an OLAP system is being stored in a pre-aggregated and multi-dimensional form. The main benefit of storing data in such form, is that it is optimized for ad-hoc complex aggregations. For example, by storing pre-aggregations using different levels of granularity (hourly, daily, weekly, etc.), we can efficiently answer questions like &ldquo;what were the monthly sales before two years?&rdquo;, or &ldquo;what is the average time that the users are spending in a day using a specific feature of our service the past 90 days?&rdquo;. Furthermore, we may need to dive to a more detailed view at any time and recalculate the aggregations over any other dimension of the data. Consider, for example, that now we would like to recalculate the aforementioned questions and group the results over every country around the world, in order to produce more detailed visualizations/reports/dashboards and help to decision making.</p>
+
+<p>Such answers are not impossible to be gathered from relational databases, but the complexity of schema design and maintenance, along with the requirement to able to answer &ldquo;efficiently&rdquo; such complex ad-hoc aggregations may result to a data engineering nightmare (multiple tables, indexes, possibly multiple databases and custom ETL tasks).</p>
+
+<p>In brief, the main characteristics of OLAP systems are outlined below:</p>
+
+<ul>
+<li>Keep the timeseries of the data &mdash; e.g., able to know the evolution of a metric value.</li>
+<li>The queries that analysts usually perform are ad-hoc, thus the system should be able to answer any business question without the need of schema engineering. The data should be collected and queried quickly for any dimension.</li>
+<li>In contrast to relational databases, the data may be stored with a lot of redundancy. This is desired, either for improving the speed of collecting the results (e.g., avoiding joins), or due to the need of having the evolution of the data in a timeseries.</li>
+<li>To answer business questions, it may needed to scan large amounts of data.</li>
+</ul>
+
+<p>The main concepts behind an OLAP system are the following:</p>
+
+<ol>
+<li><p><a href="https://en.wikipedia.org/wiki/OLAP_cube">OLAP cubes</a>: You can consider a cube as a multi-dimensional generalization of a spreadsheet. For example, consider that we would like to have the sales by country, by some time periods (e.g., per week, per month, quarterly and annually), as well as by any other possible dimension (e.g., per region, city, service feature, etc.).</p></li>
+
+<li><p>The pre-calculation of all possible aggregations in a cube would be the ideal case for the fastest possible answer response time for any query, however it requires significant processing time and storage. Depending on the business requirements, the configuration of the system and the type of the aggregation, we usually set which aggregations are going to be fully pre-calculated during data ingestion &mdash; thus, any other aggregation is calculated on-demand during query computation.</p></li>
+</ol>
+
+<p>There are many commercial and open-source OLAP systems, a brief comparison can be found in <a href="https://en.wikipedia.org/wiki/Comparison_of_OLAP_servers">Wikipedia</a>. As the title of this article reveals, we are going to focus on <a href="http://druid.io">Apache Druid</a>, a distributed data store designed for high-performance slice-and-dice analytics (OLAP-style) on large data sets.</p>
+
+<h2 id="apache-druid">Apache Druid</h2>
+
+<p><a href="http://druid.io">Apache Druid</a> was created by advertising analytics company <a href="https://metamarkets.com">Metamarkets</a> and so far has been used by <a href="http://druid.io/druid-powered">many companies</a>, including Airbnb, Netflix, Nielsen, eBay, Paypal and Yahoo. It combines ideas from <a href="https://en.wikipedia.org/wiki/Online_analytical_processing">OLAP databases</a>, <a href="https://en.wikipedia.org/wiki/Time_series_database">time-series databases</a>, and <a href="https://en.wikipedia.org/wiki/Full-text_search">search systems</a> to create a unified system for a broad range of use cases. Initially, Apache Druid became an open-source software in 2012 under the GPL license, thereafter in 2015 changed to Apache 2 license and in 2018 joined the Apache Software Foundation as an incubating project.</p>
+
+<p>What Druid provides to deal with OLAP-like queries:</p>
+
+<ul>
+<li>For storage efficiency and fast filtering over dimensions of data, Druid stores data in a column-oriented compressed format (see <a href="https://en.wikipedia.org/wiki/Column-oriented_DBMS#Column-oriented_systems">Column-oriented systems</a> and <a href="http://nms.csail.mit.edu/~stavros/pubs/tutorial2009-column_stores.pdf">Column-Oriented Database Systems</a>). Therefore, it can deal with data redundancy and at the same time it uses an efficient format for performing queries over multi-dimensional aggregations and groupings.
+
+<ul>
+<li>To answer a query, it only loads the exact columns that are required.</li>
+<li>Each column is stored optimized for its particular data type.</li>
+<li>To provide fast filtering and searching across multiple columns, Druid uses state-of-the-art compressed bitmap indexes (for details see <a href="https://arxiv.org/pdf/1004.0403">CONCISE</a> and <a href="https://roaringbitmap.org">Roaring</a>).</li>
+</ul></li>
+<li>The schema of any datasource (i.e., a table in Druid) is very flexible and can easily evolve.</li>
+<li>The data are being partitioned based on time, thus timeseries queries are significantly faster than traditional databases.</li>
+<li>Druid provides out-of-the-box algorithms for approximate count-distinct, approximate ranking, and computation of approximate histograms and quantiles.</li>
+<li>It is highly scalable and has been used in production environments with millions of events per second and storage of years of data.</li>
+<li>Sub-second average response time of queries.</li>
+<li>Fault-tolerant architecture.</li>
+<li>Integration with state-of-the-art big data technologies, including <a href="http://druid.io/docs/latest/development/extensions-core/kafka-ingestion.html">Apache Kafka</a>, <a href="https://github.com/druid-io/tranquility/blob/master/docs/flink.md">Apache Flink</a>, <a href="https://github.com/druid-io/tranquility/blob/master/docs/spark.md">Apache Spark</a> and <a href="https://cwiki.apache.org/confluence/display/Hive/Druid+Integration">Apache Hive</a>.</li>
+<li>Provides a <a href="http://druid.io/docs/latest/querying/querying.html">native JSON based language</a>, as well as <a href="http://druid.io/docs/latest/querying/sql.html">SQL (experimental) over HTTP or JDBC</a>.</li>
+<li>Supported by high-level business intelligence and analytics data exploration and visualization tools like <a href="https://github.com/metabase/metabase">Metabase</a> and <a href="https://github.com/apache/incubator-superset">Apache Superset</a>.</li>
+</ul>
+
+<h3 id="how-data-are-being-stored">How data are being stored</h3>
+
+<p>Tables in Druid are named as <em>datasources</em> and they are partitioned by time intervals. Each time interval is named as <em>chunk</em> and is composed of <em>segments</em>. A segment is an immutable data structure which is being periodically persisted. For example, you can set segments to be created once a day, or every hour, etc. As it is shown in Fig. 1, a segment is composed of the following three column types:</p>
+
+<ul>
+<li><strong>Timestamp</strong>: the timestamp of the data (rolled-up or not).</li>
+<li><strong>Dimension</strong>: a field of the input data that can be used to perform filter and group-by.</li>
+<li><strong>Metric</strong>: a pre-aggregation (e.g., first, last, sum, max, etc.).</li>
+</ul>
+
+<figure>
+    <img src="https://anskarl.github.io/post/2019/201903-druid-part-1/druid_segment_core_datastructures.png"
+         alt="Segment core data structures"/> <figcaption>
+            <p>Segment core data structures</p>
+        </figcaption>
+</figure>
+
+
+<p>Each <em>chunk</em> can be composed of one or more segment files. Depending on the configuration of the data ingestion, the segments can be created either when the number of their records reaches some maximum threshold (e.g., five million of records) or when there are multiple concurrent ingestion tasks and thus each one creates a separate segment file, or the file size of the segment file in a task exceeds some threshold (e.g., more than 512MB). For more in depth details regarding segments you can read <a href="http://druid.io/docs/latest/design/segments.html">the official documentation</a>.</p>
+
+<p>Furthermore, you can specify the granularity of the data inside a segment. Assume, for example, that your need an hour-level granularity in your use case. You can setup druid to automatically aggregate your real-time data by hour. To illustrate how rollup works in Druid, consider for example, the following fragment of input data in JSON:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{<span style="color:#f92672">&#34;timestamp&#34;</span>:<span style="color:#e6db74">&#34;2018-01-01T01:01:31Z&#34;</span>,<span style="color:#f92672">&#34;user_name&#34;</span>:<span style="color:#e6db74">&#34;Boxer&#34;</span>,<span style="color:#f92672">&#34;city&#34;</span>:<span style="color:#e6db74">&#34;San Fransisco&#34;</span>,<span style="color:#f92672">&#34;characters_added&#34;</span>:<span style="color:#ae81ff">1000</span>}
+{<span style="color:#f92672">&#34;timestamp&#34;</span>:<span style="color:#e6db74">&#34;2018-01-01T01:02:16Z&#34;</span>,<span style="color:#f92672">&#34;user_name&#34;</span>:<span style="color:#e6db74">&#34;Boxer&#34;</span>,<span style="color:#f92672">&#34;city&#34;</span>:<span style="color:#e6db74">&#34;San Fransisco&#34;</span>,<span style="color:#f92672">&#34;characters_added&#34;</span>:<span style="color:#ae81ff">400</span>}
+{<span style="color:#f92672">&#34;timestamp&#34;</span>:<span style="color:#e6db74">&#34;2018-01-01T01:03:21Z&#34;</span>,<span style="color:#f92672">&#34;user_name&#34;</span>:<span style="color:#e6db74">&#34;Boxer&#34;</span>,<span style="color:#f92672">&#34;city&#34;</span>:<span style="color:#e6db74">&#34;San Fransisco&#34;</span>,<span style="color:#f92672">&#34;characters_removed&#34;</span>:<span style="color:#ae81ff">25</span>}
+{<span style="color:#f92672">&#34;timestamp&#34;</span>:<span style="color:#e6db74">&#34;2018-01-01T01:03:46Z&#34;</span>,<span style="color:#f92672">&#34;user_name&#34;</span>:<span style="color:#e6db74">&#34;Boxer&#34;</span>,<span style="color:#f92672">&#34;city&#34;</span>:<span style="color:#e6db74">&#34;San Fransisco&#34;</span>,<span style="color:#f92672">&#34;characters_added&#34;</span>:<span style="color:#ae81ff">400</span>}
+{<span style="color:#f92672">&#34;timestamp&#34;</span>:<span style="color:#e6db74">&#34;2018-01-01T02:05:41Z&#34;</span>,<span style="color:#f92672">&#34;user_name&#34;</span>:<span style="color:#e6db74">&#34;Helz&#34;</span>,<span style="color:#f92672">&#34;city&#34;</span>:<span style="color:#e6db74">&#34;Calgary&#34;</span>,<span style="color:#f92672">&#34;characters_added&#34;</span>:<span style="color:#ae81ff">1800</span>}
+{<span style="color:#f92672">&#34;timestamp&#34;</span>:<span style="color:#e6db74">&#34;2018-01-01T02:07:36Z&#34;</span>,<span style="color:#f92672">&#34;user_name&#34;</span>:<span style="color:#e6db74">&#34;Helz&#34;</span>,<span style="color:#f92672">&#34;city&#34;</span>:<span style="color:#e6db74">&#34;Calgary&#34;</span>,<span style="color:#f92672">&#34;characters_removed&#34;</span>:<span style="color:#ae81ff">17</span>}
+{<span style="color:#f92672">&#34;timestamp&#34;</span>:<span style="color:#e6db74">&#34;2018-01-01T02:10:06Z&#34;</span>,<span style="color:#f92672">&#34;user_name&#34;</span>:<span style="color:#e6db74">&#34;Helz&#34;</span>,<span style="color:#f92672">&#34;city&#34;</span>:<span style="color:#e6db74">&#34;Calgary&#34;</span>,<span style="color:#f92672">&#34;characters_added&#34;</span>:<span style="color:#ae81ff">153</span>}</code></pre></div>
+
+<p>Each line is a json that represents a single input event. Field <em>timestamp</em> is the timestamp of the event expressed using the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO-8601</a> standard, while <em>characters_added</em> and <em>characters_removed</em> are metrics. For the shake of simplicity the given fragment of data includes only two dimensions in the example JSON, that is <em>user_name</em> and <em>city</em>. By setting the rollup to hour-level granularity the above example will be aggregated into hourly records as it is shown in Fig. 1. For instance, the value of _characters_<em>added</em> in segment that corresponds to the interval <em>2018-01-01T01:00:00Z</em> until <em>2018-01-01T02:00:00Z</em>, is simply the sum of all its values within that interval (i.e., <em>1000 + 400 + 400 = 1800</em>). For further details regarding rollup see <a href="http://druid.io/docs/latest/tutorials/tutorial-rollup.html">the official tutorial</a>.</p>
+
+<h3 id="a-brief-overview-of-the-architecture">A brief overview of the architecture</h3>
+
+<p>Druid has an architecture that is distributed and scalable. The design of Druid is driven by the requirements of having a highly available system, with flexible configuration and at the same time to be cloud-friendly and easy to operate. A diagram of the architecture is being shown below in Fig. 2.</p>
+
+<figure>
+    <img src="https://anskarl.github.io/post/2019/201903-druid-part-1/druid_architecture_diagram.png"
+         alt="Druid Architecture"/> <figcaption>
+            <p>Druid Architecture</p>
+        </figcaption>
+</figure>
+
+
+<p>First of all, Druid platform relies on the following three external dependencies:</p>
+
+<ol>
+<li><p><strong>Deep Storage</strong>: it can be any distributed file system or object storage, like Amazon S3, Azure Blob Storage, Apache HDFS (or any HDFS compatible system), or a network mounted file system. The purpose of the deep storage is to persist all data ingested by Druid, as a backup solution and at the same time to be available to all Druid components and clusters, when it is needed.</p></li>
+
+<li><p><strong>Metadata Storage</strong>: is backed by a traditional relational database system, e.g., PostgreSQL or MySQL. All metadata are available to any Druid component. There are various types of metadata in Druid, some are related to the persisted segments in deep storage, for example paths of segment files, their timestamp, their version, etc., other may related to external systems like the ingested partition offsets from a Apache Kafka topic and the rest are related to metadata of various internal processes (e.g., in which segments are being created now).</p></li>
+
+<li><p><strong>ZooKeeper</strong>: is used for internal service discovery, coordination, and leader election.</p></li>
+</ol>
+
+<p>The architecture of Druid is composed of the following components of processing types:</p>
+
+<ul>
+<li><strong>Middle Manager</strong> processes handle the ingestion of data into the cluster. For example, they are responsible to ingest real-time streaming data from Apache Kafka or load batches of data from some other source (e.g., files from HDFS).</li>
+<li><strong>Historical</strong> processes handle the storage and querying on &ldquo;historical&rdquo; data. Nodes that are running Historical processes fetch segments from deep storage to their local disk and respond to queries about these segments.</li>
+<li><strong>Broker</strong> processes receive queries from external clients. They identify which <em>Historical</em> and <em>Middle Manager</em> nodes are serving those segments and send a rewritten sub-query to each one of these processes. Thereafter, they collect and merge the results and respond to the caller. Internally, <em>Historical</em> processes respond to sub-queries that correspond to segments of data that have been persisted to the deep storage, while <em>Middle Manager</em> respond to sub-queries that correspond to recently ingested data (i.e., in-memory data that hasn&rsquo;t been published to the deep storage).</li>
+<li>In order to balance the data over the <em>Historical</em> and <em>Middle Manager</em> processes, Druid has <strong>Coordinator</strong> processes and <strong>Overlord</strong> processes, respectively. <em>Coordinator</em> processes, specifically, are responsible for assigning segments to specific nodes that are running <em>Historical</em> processes. Similarly, <em>Overlord</em> processes, are responsible for assigning ingestion tasks to <em>Middle Managers</em> and for coordinating segment publishing.</li>
+<li>Finally <strong>Router</strong> processes, provide a unified API gateway in front of <em>Brokers</em>, <em>Overlords</em>, and <em>Coordinators</em>. Their use is optional since you can also simply contact the <em>Brokers</em>, <em>Overlords</em>, and <em>Coordinators</em> directly.</li>
+</ul>
+
+<p>As it has been outlined, Druid is composed of separate components for ingestion, querying and coordination. Each Druid process component can be configured and scaled independently, giving you maximum possible flexibility, as well as a robustness to fault tolerance (since an outage of one component will not immediately affect other components). Furthermore, the separation of deep storage and the metadata store from the rest of the Druid system gives the ability to relaunch a component or an entire cluster from data that is has been persisted in deep and metadata storage.</p>
+
+<h3 id="data-ingestion-flow">Data ingestion flow</h3>
+
+<p>Data ingestion flow is a two part process. In the first part, <em>Middle Managers</em> are running indexing tasks that create and publish segments to <em>Deep storage</em>. In the second part, the published segments are fetched from <em>Deep storage</em> by <em>Historical</em> processes, in order to be used in query answering.</p>
+
+<h4 id="indexing-segments-creation-and-publishing">Indexing: Segments Creation and Publishing</h4>
+
+<p><em>Middle Managers</em> are responsible for the ingestion of external data sources e.g., batch ingestion of files in HDFS or streaming ingestion from Kafka. The diagram in Fig. 3 highlights the components that take part during data ingestion, while the rest ones have been grayed out. During ingestion, the data is indexed, pre-aggregated, split into segments (w.r.t. the number of records, as well as the roll-up interval) and thereafter published into <em>Deep Storage</em>.</p>
+
+<figure>
+    <img src="https://anskarl.github.io/post/2019/201903-druid-part-1/druid_ingestion_flow.png"
+         alt="Indexing: Segments Creation and Publishing"/> <figcaption>
+            <p>Indexing: Segments Creation and Publishing</p>
+        </figcaption>
+</figure>
+
+
+<p>The data ingestion from a data source may correspond to one or more ingestion tasks. For log and resource isolation, <em>Middle Manager</em> processes create and forward ingestion tasks to <strong>Peons</strong> &mdash; that is, separate JVM instances that handle a single ingestion task at a time.</p>
+
+<p>At the beginning of an indexing task, a new segment is created. The input data of a segment may originate by a real-time stream (e.g., a Kafka topic) or by a batch of files (e.g., CSV files in HDFS). There are two types of ingestion modes:</p>
+
+<ul>
+<li><strong>Append mode</strong>: When the input data source is a stream (e.g., a Kafka topic) or the batch indexing task is set to appending mode (i.e., read files and append an existing Druid datasource) the tasks add new segments to existing set of segments of the same interval of time.</li>
+<li><strong>Overwrite mode</strong>: Old segments are being deactivated and replaced by the new ones having a new version number for the same interval.</li>
+</ul>
+
+<p>One important feature of Druid, is that the currently creating segments from tasks that are real-time are immediately queryable &mdash; e.g., the records that are being consumed from Kafka are immediately queryable, despite that they haven&rsquo;t published yet to <em>Deep storage</em>.</p>
+
+<p>A task is completed either when it has indexed the maximum number of records per segment (e.g., five million records) or reached the desired rollup interval of time (e.g., hourly aggregates). At this point, the segment is published by persisting its data to the <em>Deep storage</em> and its metadata to the <em>Metadata store</em>.</p>
+
+<h4 id="handoff-published-segments-fetching-for-query-answering">Handoff: Published Segments Fetching for Query Answering</h4>
+
+<p>The diagram in Fig. 4 highlights the components that take part during handoff, the rest ones are grayed out.</p>
+
+<figure>
+    <img src="https://anskarl.github.io/post/2019/201903-druid-part-1/druid_ingestion_flow_handoff.png"
+         alt="Handoff: Published Segments Fetching for Query Answering"/> <figcaption>
+            <p>Handoff: Published Segments Fetching for Query Answering</p>
+        </figcaption>
+</figure>
+
+
+<p>The <em>Coordinator</em> processes are periodically polling the <em>Metadata store</em> in order to find any newly published segments from data ingestion tasks. Once a newly created segment is being discovered by a <em>Coordinator</em> process, it chooses which <em>Historical process</em> should fetch the segment from <em>Deep storage</em>. When the segment has been successfully loaded, the <em>Historical process</em> is ready to serve it for querying.</p>
+
+<h3 id="query-answering">Query Answering</h3>
+
+<p>Clients send queries directly to the <em>Broker</em> (or indirectly via a <em>Router</em>). A query can be expressed using the <a href="http://druid.io/docs/latest/querying/querying.html">native JSON based language</a> or the <a href="http://druid.io/docs/latest/querying/sql.html">experimental SQL language</a>.
+The type of the query can be any of <a href="http://druid.io/docs/latest/querying/timeseriesquery.html">Timeseries</a>, <a href="http://druid.io/docs/latest/querying/topnquery.html">TopN</a> or <a href="http://druid.io/docs/latest/querying/groupbyquery.html">GroupBy</a>. All type of the aforementioned queries  contain at least the target interval time, as well as the dimensions and/or the metrics of interest. The target interval of time is the information that Druid uses to decide which segments are required to be processed to answer the query. The diagram in Fig. 5 highlights the components that take part during query answering, the rest ones are grayed out.</p>
+
+<figure>
+    <img src="https://anskarl.github.io/post/2019/201903-druid-part-1/druid_query_flow.png"
+         alt="Query answering"/> <figcaption>
+            <p>Query answering</p>
+        </figcaption>
+</figure>
+
+
+<p>Once the query is being requested by a client, one of the initial tasks of a <em>Broker</em> is to identify the which processes serve the desired segments. For example, lets say that a we are interested to find &ldquo;<em>the top 10 users with the higher average time per hour the last 48 hours, starting from now</em>&rdquo;. The query requires both data that have been indexed and published to the <em>Deep Storage</em>, as well as segments from the currently ingesting data from <em>Middle Manager</em> processes.  At this point, <em>Broker</em> sends the corresponding sub-queries to <em>Historical</em> and <em>Middle Manager</em> nodes, where each one will compute the requested aggregations and filterings and thereafter send back the results. Finally, <em>Broker</em> collects and merges the desired data, and thereafter responds back to the client with the final results.</p>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Online_analytical_processing">OLAP systems</a> are very powerful databases for serving ad-hoc queries with complex aggregations that are commonly used by Business Intelligence, Analytics and Data Science applications. The characteristics and concepts behind their design, differentiate them from traditional relational databases and make them ideal for such applications. This article gently presents the OLAP-like timeseries database <a href="http://druid.io">Apache Druid</a>, by outlining its architecture and the way that its components interact for data ingestion, indexing and query answering. As it has been illustrated, the architecture is cloud-friendly, easy to operate, highly scalable and flexible to configure. Having seen how data are being organized and how queries are being computed, in an upcoming article we are going to focus on the practical use of Druid with example queries using the open-source library <a href="https://github.com/ing-bank/scruid">Scruid</a>.</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Apache%20Druid%20%28part%201%29%3a%20A%20Scalable%20Timeseries%20OLAP%20Database%20System&nbsp;-&nbsp;Anastasios%20Skarlatidis&amp;url=https%3a%2f%2fanskarl.github.io%2fpost%2f2019%2fdruid-part-1%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fanskarl.github.io%2fpost%2f2019%2fdruid-part-1%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fanskarl.github.io%2fpost%2f2019%2fdruid-part-1%2f&amp;description=Apache%20Druid%20%28part%201%29%3a%20A%20Scalable%20Timeseries%20OLAP%20Database%20System"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+</section>
+
+
+
+    
+
+<br/>
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/anskarl.github.io\/post\/2019\/druid-part-1\/";  
+this.page.identifier = "https:\/\/anskarl.github.io\/post\/2019\/druid-part-1\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://anskarl-webpage-github.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Anastasios Skarlatidis</a> All rights reserved - 2019</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://anskarl.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://anskarl.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://anskarl.github.io/js/index.js"></script>
+    
+</body>
+</html>
+

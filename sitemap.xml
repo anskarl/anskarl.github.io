@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://anskarl.github.io/</loc>
+    <loc>https://anskarl.github.io/post/2019/druid-part-1/</loc>
+    <lastmod>2019-03-29T08:16:40+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://anskarl.github.io/publications/tocl15/</loc>
     <lastmod>2016-10-08T23:07:22+03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://anskarl.github.io/publications/TOCL15/</loc>
-    <lastmod>2016-10-08T23:07:22+03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://anskarl.github.io/publications/TPLP15/</loc>
+    <loc>https://anskarl.github.io/publications/tplp15/</loc>
     <lastmod>2016-10-08T22:42:34+03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://anskarl.github.io/publications/RML11/</loc>
+    <loc>https://anskarl.github.io/publications/rml11/</loc>
     <lastmod>2016-10-08T22:06:45+03:00</lastmod>
   </url>
   
@@ -29,6 +30,59 @@
   <url>
     <loc>https://anskarl.github.io/about/</loc>
     <lastmod>2016-10-08T20:58:11+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://anskarl.github.io/</loc>
+    <lastmod>2019-03-29T08:16:40+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anskarl.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anskarl.github.io/tags/database/</loc>
+    <lastmod>2019-03-29T08:16:40+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anskarl.github.io/tags/druid/</loc>
+    <lastmod>2019-03-29T08:16:40+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anskarl.github.io/tags/olap/</loc>
+    <lastmod>2019-03-29T08:16:40+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anskarl.github.io/post/</loc>
+    <lastmod>2019-03-29T08:16:40+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anskarl.github.io/publications/</loc>
+    <lastmod>2016-10-08T23:07:22+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anskarl.github.io/tags/</loc>
+    <lastmod>2019-03-29T08:16:40+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anskarl.github.io/tags/timeseries/</loc>
+    <lastmod>2019-03-29T08:16:40+02:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>

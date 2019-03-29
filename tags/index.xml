@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Anastasios Skarlatidis</title>
+    <link>https://anskarl.github.io/tags/</link>
+    <description>Recent content in Tags on Anastasios Skarlatidis</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>All rights reserved - 2019</copyright>
+    <lastBuildDate>Fri, 29 Mar 2019 08:16:40 +0200</lastBuildDate>
+    
+	<atom:link href="https://anskarl.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Database</title>
+      <link>https://anskarl.github.io/tags/database/</link>
+      <pubDate>Fri, 29 Mar 2019 08:16:40 +0200</pubDate>
+      
+      <guid>https://anskarl.github.io/tags/database/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Druid</title>
+      <link>https://anskarl.github.io/tags/druid/</link>
+      <pubDate>Fri, 29 Mar 2019 08:16:40 +0200</pubDate>
+      
+      <guid>https://anskarl.github.io/tags/druid/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Olap</title>
+      <link>https://anskarl.github.io/tags/olap/</link>
+      <pubDate>Fri, 29 Mar 2019 08:16:40 +0200</pubDate>
+      
+      <guid>https://anskarl.github.io/tags/olap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Timeseries</title>
+      <link>https://anskarl.github.io/tags/timeseries/</link>
+      <pubDate>Fri, 29 Mar 2019 08:16:40 +0200</pubDate>
+      
+      <guid>https://anskarl.github.io/tags/timeseries/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
