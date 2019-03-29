@@ -23,42 +23,6 @@ Compared to traditional relational database systems, the main difference is that
     </item>
     
     <item>
-      <title>Probabilistic Event Calculus for Event Recognition</title>
-      <link>https://anskarl.github.io/publications/tocl15/</link>
-      <pubDate>Sat, 08 Oct 2016 23:07:22 +0300</pubDate>
-      
-      <guid>https://anskarl.github.io/publications/tocl15/</guid>
-      <description>Anastasios Skarlatidis1,2, Georgios Paliouras1, Alexander Artikis3,1 and George A. Vouros2
-1Institute of Informatics and Telecommunications, NCSR &amp;ldquo;Demokritos&amp;rdquo; 2Department of Digital Systems, University of Piraeus 3Department of Maritime Studies, University of Piraeus
- Abstract
-Symbolic event recognition systems have been successfully applied to a variety of application domains, extracting useful information in the form of events, allowing experts or other systems to monitor and respond when significant events are recognised. In a typical event recognition application, however, these systems often have to deal with a significant amount of uncertainty.</description>
-    </item>
-    
-    <item>
-      <title>A Probabilistic Logic Programming Event Calculus</title>
-      <link>https://anskarl.github.io/publications/tplp15/</link>
-      <pubDate>Sat, 08 Oct 2016 22:42:34 +0300</pubDate>
-      
-      <guid>https://anskarl.github.io/publications/tplp15/</guid>
-      <description>Anastasios Skarlatidis1,2, Alexander Artikis1, Jason Filippou1,3 and Georgios Paliouras1
-1Institute of Informatics and Telecommunications, NCSR &amp;ldquo;Demokritos&amp;rdquo; 2Department of Digital Systems, University of Piraeus 3University of Maryland, USA 
- Abstract:
-We present a system for recognising human activity given a symbolic representation of video content. The input of our system is a set of time-stamped short-term activities (STA) detected on video frames. The output is a set of recognised long-term activities (LTA), which are pre-defined temporal combinations of STA.</description>
-    </item>
-    
-    <item>
-      <title>Probabilistic Event Calculus based on Markov Logic Networks</title>
-      <link>https://anskarl.github.io/publications/rml11/</link>
-      <pubDate>Sat, 08 Oct 2016 22:06:45 +0300</pubDate>
-      
-      <guid>https://anskarl.github.io/publications/rml11/</guid>
-      <description>Anastasios Skarlatidis1,2, Georgios Paliouras1, George A. Vouros2, Alexander Artikis1
-1Institute of Informatics and Telecommunications, NCSR &amp;ldquo;Demokritos&amp;rdquo; 2Department of Digital Systems, University of Piraeus
- Abstract
-In this paper, we address the issue of uncertainty in event recognition by extending the Event Calculus with probabilistic reasoning. Markov Logic Networks are a natural candidate for our logic-based formalism. However, the temporal semantics of Event Calculus introduce a number of challenges for the proposed model.</description>
-    </item>
-    
-    <item>
       <title>Publications</title>
       <link>https://anskarl.github.io/publications/</link>
       <pubDate>Sat, 08 Oct 2016 20:58:21 +0300</pubDate>
